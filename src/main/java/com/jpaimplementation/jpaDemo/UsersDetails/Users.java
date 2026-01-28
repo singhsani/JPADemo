@@ -1,9 +1,10 @@
 package com.jpaimplementation.jpaDemo.UsersDetails;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @Table(name="users" ,schema = "test")
 @NoArgsConstructor
 @Data
+@ToString(exclude = "addresses")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,10 +28,18 @@ public class Users {
     @Column(name = "mobileNo", nullable = false, unique = true)
     private String mobileNo;
 
+    @Column(name="login_id",nullable = false,unique = true)
+    private String loginId;
+
+    @Column(name="password",nullable = false,unique = true)
+    private volatile String password;
+
+    @Column(name="role",nullable = false)
+    private String role;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses=new ArrayList<>();
-
 
 
 }

@@ -1,12 +1,15 @@
 package com.jpaimplementation.jpaDemo.UsersDetails;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name="address",schema = "test")
 @Data
+@ToString(exclude = "user")
 public class Address {
 
     @Id

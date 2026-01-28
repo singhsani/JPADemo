@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+
 public class UserDTO {
     private Long id;
     private String username;
     private String emailId;
     private String mobileNo;
-    private List<Address> addresses=new ArrayList<>();
+    private String password;
+    private List<AddressDTO> addresses=new ArrayList<>();
 }
